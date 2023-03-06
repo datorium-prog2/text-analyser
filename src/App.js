@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -39,23 +40,23 @@ function App() {
       <Row className='mb-3 pt-5'>
         <Col xs={4}>
           <h3>Top 5 used words</h3>
-          <ol>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-          </ol>
+          <ListGroup as="ol" numbered>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+          </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>Top 5 least used words</h3>
-          <ol>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-          </ol>
+          <ListGroup as="ol" numbered>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+          </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>Longest used word</h3>
@@ -65,23 +66,23 @@ function App() {
       <Row className='mb-3'>
         <Col xs={4}>
           <h3>Top 5 used letters</h3>
-          <ol>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-          </ol>
+          <ListGroup as="ol" numbered>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+          </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>Top 5 least used letters</h3>
-          <ol>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-            <li>word</li>
-          </ol>
+          <ListGroup as="ol" numbered>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+          </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>shortest used word</h3>
