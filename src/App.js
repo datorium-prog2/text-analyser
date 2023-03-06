@@ -60,7 +60,9 @@ function App() {
         </Col>
         <Col xs={4}>
           <h3>Longest used word</h3>
-          <span>kautkadgarshvaards</span>
+          <h5 className='text-success'>
+            kautkadgarshvaards
+          </h5>
         </Col>
       </Row>
       <Row className='mb-3'>
@@ -86,7 +88,7 @@ function App() {
         </Col>
         <Col xs={4}>
           <h3>shortest used word</h3>
-          <span>if</span>
+          <h5 className='text-danger'>if</h5>
         </Col>
       </Row>
     </Container>
