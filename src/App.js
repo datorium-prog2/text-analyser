@@ -5,38 +5,62 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 
+import {getWordsUsage} from './utils/textUtilities'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-
+  const [textValue, setTextValue] = useState('')
 
   return (
     <Container>
       <Row>
         <Col xs={12}>
-          <h1 className='mt-3 mb-3'>Text analyser!</h1>
+          <h1 className='mt-3 mb-3'>
+            Text analyser!
+          </h1>
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <Form.Group className="mb-3" controlId="textToAnalyse">
-            <Form.Label>Text to analyse</Form.Label>
-            <Form.Control 
-              as="textarea" 
-              rows={10}
-              placeholder="Lorem ipsum dolor sit atmet..."
-            />
-          </Form.Group>
-        </Col>
-      </Row>
-      <Row className='mb-5'>
-        <Col className="text-end">
-          <Button variant="info">
-            Analyse text
-          </Button>
-        </Col>
-      </Row>
+      <Form onSubmit={(eventObject) => {
+        eventObject.preventDefault()
+
+        const fiveUsedWords = getWordsUsage(textValue, true, ' ')
+        const fiveLeastUsedWords = getWordsUsage(textValue, false, ' ')
+        const fiveUsedLetter = getWordsUsage(textValue, true, '')
+        const fiveLeastUsedLetter = getWordsUsage(textValue, false, '')
+
+        console.log('fiveUsedWords', fiveUsedWords)
+        console.log('fiveLeastUsedWords', fiveLeastUsedWords)
+        console.log('fiveLeastUsedLetter', fiveLeastUsedLetter)
+        console.log('fiveUsedLetter', fiveUsedLetter)
+      }}>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="textToAnalyse">
+              <Form.Label>Text to analyse</Form.Label>
+              <Form.Control 
+                as="textarea" 
+                rows={10}
+                placeholder="Lorem ipsum dolor sit atmet..."
+                required
+                value={textValue}
+                onChange={(e) => {
+                  setTextValue(e.target.value)
+                }}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Row className='mb-5'>
+          <Col className="text-end">
+            <Button type="submit" variant="info">
+              Analyse text
+            </Button>
+          </Col>
+        </Row>
+      </Form>
       <Row className='mb-3 pt-5'>
         <Col xs={4}>
           <h3>Top 5 used words</h3>
