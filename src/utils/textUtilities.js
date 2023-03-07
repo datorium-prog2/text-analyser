@@ -13,6 +13,7 @@ const prepareTextForAnalysing = (text) => {
         .replaceAll('…', '')
         .replaceAll('-', '')
         .replaceAll('–', '')
+        .replaceAll('=', ' ')
         .replaceAll(/[0-9]/g, '')
         .replaceAll('\n', ' ')
 }

@@ -75,29 +75,32 @@ function App() {
           </Col>
         </Row>
       </Form>
-      <Row className='mb-3 pt-5'>
-        <Col xs={4}>
+      <Row className='mb-5 pt-5'>
+        <Col xs={12} sm={6} md={4} className="column mb-3">
           <h3>Top 5 used words</h3>
           
-          {textStats.fiveUsedWords.length === 0 &&  (
-                <ListGroup as="ol">
-                  <ListGroup.Item as="li">
-                    Nothing to analyse, please insert text
-                  </ListGroup.Item>
-              </ListGroup>
-            )}
+          <div>
+            {textStats.fiveUsedWords.length === 0 &&  (
+                  <ListGroup as="ol">
+                    <ListGroup.Item as="li">
+                      Nothing to analyse, please insert text
+                    </ListGroup.Item>
+                </ListGroup>
+              )}
 
-          <ListGroup as="ol" numbered>
-            {textStats.fiveUsedWords.map((item) => {
-              return (
-                <ListGroup.Item key={Math.random()} as="li">
-                  Word "<b>{item.word}</b>" used <b>{item.count} times</b>
-                </ListGroup.Item>
-              )})}
-          </ListGroup>
+            <ListGroup as="ol" numbered>
+              {textStats.fiveUsedWords.map((item) => {
+                return (
+                  <ListGroup.Item key={Math.random()} as="li">
+                    Word "<b>{item.word}</b>" used <b>{item.count} times</b>
+                  </ListGroup.Item>
+                )})}
+            </ListGroup>
+          </div>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} sm={6} md={4} className="column mb-3">
           <h3>Top 5 least used words</h3>
+          <div>
             {textStats.fiveLeastUsedWords.length === 0 &&  (
                 <ListGroup as="ol">
                   <ListGroup.Item as="li">
@@ -107,101 +110,107 @@ function App() {
             )}
 
             <ListGroup as="ol" numbered>
-            {textStats.fiveLeastUsedWords.map((item) => {
+              {textStats.fiveLeastUsedWords.map((item) => {
 
-              return (
-                <ListGroup.Item key={Math.random()} as="li">
-                  Word "<b>{item.word}</b>" used <b>{item.count} times</b>
-                </ListGroup.Item>
-              )})
-            }
-          </ListGroup>
+                return (
+                  <ListGroup.Item key={Math.random()} as="li">
+                    Word "<b>{item.word}</b>" used <b>{item.count} times</b>
+                  </ListGroup.Item>
+                )})
+              }
+           </ListGroup>
+          </div>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} sm={6} md={4} className="column mb-3">
           <h3>Top 5 longest words</h3>
+          <div>
+            {textStats.longestWords.length === 0 &&  (
+                <ListGroup as="ol">
+                  <ListGroup.Item as="li">
+                    Nothing to analyse, please insert text
+                  </ListGroup.Item>
+              </ListGroup>
+            )}
 
-          {textStats.longestWords.length === 0 &&  (
-              <ListGroup as="ol">
-                <ListGroup.Item as="li">
-                  Nothing to analyse, please insert text
-                </ListGroup.Item>
+            <ListGroup as="ol" numbered>
+              {textStats.longestWords.map((item) => {
+
+                return (
+                  <ListGroup.Item key={Math.random()} as="li">
+                    <b>{item.word}</b>
+                  </ListGroup.Item>
+                )})
+              }
             </ListGroup>
-          )}
-
-          <ListGroup as="ol" numbered>
-            {textStats.longestWords.map((item) => {
-
-              return (
-                <ListGroup.Item key={Math.random()} as="li">
-                  <b>{item.word}</b>
-                </ListGroup.Item>
-              )})
-            }
-          </ListGroup>
+          </div>
         </Col>
-      </Row>
-      <Row className='mb-5'>
-        <Col xs={4}>
+        <Col xs={12} sm={6} md={4} className="column mb-3">
           <h3>Top 5 used letters</h3>
-          {textStats.fiveUsedLetters.length === 0 &&  (
-              <ListGroup as="ol">
-                <ListGroup.Item as="li">
-                  Nothing to analyse, please insert text
-                </ListGroup.Item>
-            </ListGroup>
-          )}
-          <ListGroup as="ol" numbered>
-            {textStats.fiveUsedLetters.map((item) => {
+          <div>
+            {textStats.fiveUsedLetters.length === 0 &&  (
+                <ListGroup as="ol">
+                  <ListGroup.Item as="li">
+                    Nothing to analyse, please insert text
+                  </ListGroup.Item>
+              </ListGroup>
+            )}
+            <ListGroup as="ol" numbered>
+              {textStats.fiveUsedLetters.map((item) => {
 
-              return (
-                <ListGroup.Item key={Math.random()} as="li">
-                  Letter "<b>{item.word}</b>" used <b>{item.count} times</b>
-                </ListGroup.Item>
-              )})
-            }
-          </ListGroup>
+                return (
+                  <ListGroup.Item key={Math.random()} as="li">
+                    Letter "<b>{item.word}</b>" used <b>{item.count} times</b>
+                  </ListGroup.Item>
+                )})
+              }
+            </ListGroup>
+          </div>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} sm={6} md={4} className="column mb-3">
           <h3>Top 5 least used letters</h3>
-          {textStats.fiveLeastUsedLetters.length === 0 &&  (
-              <ListGroup as="ol">
-                <ListGroup.Item as="li">
-                  Nothing to analyse, please insert text
-                </ListGroup.Item>
+          <div>
+            {textStats.fiveLeastUsedLetters.length === 0 &&  (
+                <ListGroup as="ol">
+                  <ListGroup.Item as="li">
+                    Nothing to analyse, please insert text
+                  </ListGroup.Item>
+              </ListGroup>
+            )}
+
+            <ListGroup as="ol" numbered>
+              {textStats.fiveLeastUsedLetters.map((item) => {
+
+                return (
+                  <ListGroup.Item key={Math.random()} as="li">
+                    Letter "<b>{item.word}</b>" used <b>{item.count} times</b>
+                  </ListGroup.Item>
+                )})
+              }
             </ListGroup>
-          )}
-
-          <ListGroup as="ol" numbered>
-            {textStats.fiveLeastUsedLetters.map((item) => {
-
-              return (
-                <ListGroup.Item key={Math.random()} as="li">
-                  Letter "<b>{item.word}</b>" used <b>{item.count} times</b>
-                </ListGroup.Item>
-              )})
-            }
-          </ListGroup>
+          </div>
         </Col>
-        <Col xs={4}>
+        <Col xs={12} sm={6} md={4} className="column mb-3">
           <h3>Top 5 shortest words</h3>
-          {textStats.shortestWords.length === 0 &&  (
-              <ListGroup as="ol">
-                <ListGroup.Item as="li">
-                  Nothing to analyse, please insert text
-                </ListGroup.Item>
-            </ListGroup>
-          )}
+          <div>
+            {textStats.shortestWords.length === 0 &&  (
+                <ListGroup as="ol">
+                  <ListGroup.Item as="li">
+                    Nothing to analyse, please insert text
+                  </ListGroup.Item>
+              </ListGroup>
+            )}
 
-          <ListGroup as="ol" numbered>
-            {textStats.shortestWords.map((item) => {
+            <ListGroup as="ol" numbered>
+              {textStats.shortestWords.map((item) => {
 
-              return (
-                <ListGroup.Item key={Math.random()} as="li">
-                  <b>{item.word}</b>
-                </ListGroup.Item>
-              )})
-            }
-            </ListGroup>
+                return (
+                  <ListGroup.Item key={Math.random()} as="li">
+                    <b>{item.word}</b>
+                  </ListGroup.Item>
+                )})
+              }
+              </ListGroup>
+            </div>
         </Col>
       </Row>
     </Container>
