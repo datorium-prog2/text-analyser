@@ -10,9 +10,11 @@ const prepareTextForAnalysing = (text) => {
         .replaceAll('+', '')
         .replaceAll('(', '')
         .replaceAll(')', '')
+        .replaceAll('…', '')
+        .replaceAll('-', '')
         .replaceAll('–', '')
-        .replaceAll('\n', ' ')
         .replaceAll(/[0-9]/g, '')
+        .replaceAll('\n', ' ')
 }
 
 const getWordUsageObject = (wordArray) => {
@@ -83,7 +85,9 @@ export const getLongestOrShortestWord = (text, shortest) => {
     const parsedText = prepareTextForAnalysing(text)
     const textArray = parsedText.split(' ')
 
-    const textArrayParsed = textArray.filter((word) => word.trim())
+    const textArrayParsed = textArray.filter((word) => {
+        return word.trim()
+    }).filter((item, index, arr) => arr.indexOf(item) === index);
 
     let arraySortedByWordlength = textArrayParsed.sort((a, b) => {
         return b.length - a.length;
@@ -93,6 +97,8 @@ export const getLongestOrShortestWord = (text, shortest) => {
     if (shortest) {
         arraySortedByWordlength = arraySortedByWordlength.reverse()
     }
+
+    console.log(arraySortedByWordlength)
 
     // iterējam cauri 5 reizes ja ir vismaz 5 itemi masīvā, ja nē tad ejam cauri tik reizēm cik garš ir masīvs
     const timeToIterate = arraySortedByWordlength.length > 5 ? 5 : arraySortedByWordlength.length
