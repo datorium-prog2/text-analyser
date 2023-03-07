@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-import {getWordsUsage} from './utils/textUtilities'
+import {getWordsUsage, getLongestOrShortestWord} from './utils/textUtilities'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -30,11 +30,16 @@ function App() {
         const fiveLeastUsedWords = getWordsUsage(textValue, false, ' ')
         const fiveUsedLetter = getWordsUsage(textValue, true, '')
         const fiveLeastUsedLetter = getWordsUsage(textValue, false, '')
+        const longestWords = getLongestOrShortestWord(textValue, false)
+        const shortestWords = getLongestOrShortestWord(textValue, true)
+
 
         console.log('fiveUsedWords', fiveUsedWords)
         console.log('fiveLeastUsedWords', fiveLeastUsedWords)
         console.log('fiveLeastUsedLetter', fiveLeastUsedLetter)
         console.log('fiveUsedLetter', fiveUsedLetter)
+        console.log('longestWords', longestWords)
+        console.log('shortestWords', shortestWords)
       }}>
         <Row>
           <Col>
@@ -83,10 +88,13 @@ function App() {
           </ListGroup>
         </Col>
         <Col xs={4}>
-          <h3>Longest used word</h3>
-          <h5 className='text-success'>
-            kautkadgarshvaards
-          </h5>
+          <h3>Top 5 longest words</h3>
+          <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
         </Col>
       </Row>
       <Row className='mb-3'>
@@ -111,8 +119,13 @@ function App() {
           </ListGroup>
         </Col>
         <Col xs={4}>
-          <h3>shortest used word</h3>
-          <h5 className='text-danger'>if</h5>
+          <h3>Top 5 shortest words</h3>
+          <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
+            <ListGroup.Item as="li">word</ListGroup.Item>
         </Col>
       </Row>
     </Container>
