@@ -13,6 +13,14 @@ import { useState } from 'react';
 
 function App() {
   const [textValue, setTextValue] = useState('')
+  const [textStats, setTextStats] = useState({
+    fiveUsedWords: [],
+    fiveLeastUsedWords: [],
+    fiveUsedLetters: [],
+    fiveLeastUsedLetters: [],
+    longestWords: [],
+    shortestWords: [],
+  })
 
   return (
     <Container>
@@ -28,18 +36,19 @@ function App() {
 
         const fiveUsedWords = getWordsUsage(textValue, true, ' ')
         const fiveLeastUsedWords = getWordsUsage(textValue, false, ' ')
-        const fiveUsedLetter = getWordsUsage(textValue, true, '')
-        const fiveLeastUsedLetter = getWordsUsage(textValue, false, '')
+        const fiveUsedLetters = getWordsUsage(textValue, true, '')
+        const fiveLeastUsedLetters = getWordsUsage(textValue, false, '')
         const longestWords = getLongestOrShortestWord(textValue, false)
         const shortestWords = getLongestOrShortestWord(textValue, true)
 
-
-        console.log('fiveUsedWords', fiveUsedWords)
-        console.log('fiveLeastUsedWords', fiveLeastUsedWords)
-        console.log('fiveLeastUsedLetter', fiveLeastUsedLetter)
-        console.log('fiveUsedLetter', fiveUsedLetter)
-        console.log('longestWords', longestWords)
-        console.log('shortestWords', shortestWords)
+        setTextStats({ 
+          fiveUsedWords, 
+          fiveLeastUsedWords, 
+          fiveUsedLetters,
+          fiveLeastUsedLetters,
+          longestWords,
+          shortestWords,
+        })
       }}>
         <Row>
           <Col>
@@ -69,74 +78,134 @@ function App() {
       <Row className='mb-3 pt-5'>
         <Col xs={4}>
           <h3>Top 5 used words</h3>
+          
+          {textStats.fiveUsedWords.length === 0 &&  (
+                <ListGroup as="ol">
+                  <ListGroup.Item as="li">
+                    Nothing to analyse, please insert text
+                  </ListGroup.Item>
+              </ListGroup>
+            )}
+
           <ListGroup as="ol" numbered>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
+            {textStats.fiveUsedWords.map((item) => {
+              return (
+                <ListGroup.Item key={Math.random()} as="li">
+                  Word "<b>{item.word}</b>" used <b>{item.count} times</b>
+                </ListGroup.Item>
+              )})}
           </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>Top 5 least used words</h3>
-          <ListGroup as="ol" numbered>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
+            {textStats.fiveLeastUsedWords.length === 0 &&  (
+                <ListGroup as="ol">
+                  <ListGroup.Item as="li">
+                    Nothing to analyse, please insert text
+                  </ListGroup.Item>
+              </ListGroup>
+            )}
+
+            <ListGroup as="ol" numbered>
+            {textStats.fiveLeastUsedWords.map((item) => {
+
+              return (
+                <ListGroup.Item key={Math.random()} as="li">
+                  Word "<b>{item.word}</b>" used <b>{item.count} times</b>
+                </ListGroup.Item>
+              )})
+            }
           </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>Top 5 longest words</h3>
-          <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
+
+          {textStats.longestWords.length === 0 &&  (
+              <ListGroup as="ol">
+                <ListGroup.Item as="li">
+                  Nothing to analyse, please insert text
+                </ListGroup.Item>
+            </ListGroup>
+          )}
+
+          <ListGroup as="ol" numbered>
+            {textStats.longestWords.map((item) => {
+
+              return (
+                <ListGroup.Item key={Math.random()} as="li">
+                  <b>{item.word}</b>
+                </ListGroup.Item>
+              )})
+            }
+          </ListGroup>
         </Col>
       </Row>
-      <Row className='mb-3'>
+      <Row className='mb-5'>
         <Col xs={4}>
           <h3>Top 5 used letters</h3>
+          {textStats.fiveUsedLetters.length === 0 &&  (
+              <ListGroup as="ol">
+                <ListGroup.Item as="li">
+                  Nothing to analyse, please insert text
+                </ListGroup.Item>
+            </ListGroup>
+          )}
           <ListGroup as="ol" numbered>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
+            {textStats.fiveUsedLetters.map((item) => {
+
+              return (
+                <ListGroup.Item key={Math.random()} as="li">
+                  Letter "<b>{item.word}</b>" used <b>{item.count} times</b>
+                </ListGroup.Item>
+              )})
+            }
           </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>Top 5 least used letters</h3>
+          {textStats.fiveLeastUsedLetters.length === 0 &&  (
+              <ListGroup as="ol">
+                <ListGroup.Item as="li">
+                  Nothing to analyse, please insert text
+                </ListGroup.Item>
+            </ListGroup>
+          )}
+
           <ListGroup as="ol" numbered>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
+            {textStats.fiveLeastUsedLetters.map((item) => {
+
+              return (
+                <ListGroup.Item key={Math.random()} as="li">
+                  Letter "<b>{item.word}</b>" used <b>{item.count} times</b>
+                </ListGroup.Item>
+              )})
+            }
           </ListGroup>
         </Col>
         <Col xs={4}>
           <h3>Top 5 shortest words</h3>
-          <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
-            <ListGroup.Item as="li">word</ListGroup.Item>
+          {textStats.shortestWords.length === 0 &&  (
+              <ListGroup as="ol">
+                <ListGroup.Item as="li">
+                  Nothing to analyse, please insert text
+                </ListGroup.Item>
+            </ListGroup>
+          )}
+
+          <ListGroup as="ol" numbered>
+            {textStats.shortestWords.map((item) => {
+
+              return (
+                <ListGroup.Item key={Math.random()} as="li">
+                  <b>{item.word}</b>
+                </ListGroup.Item>
+              )})
+            }
+            </ListGroup>
         </Col>
       </Row>
     </Container>
   );
 }
-
-// top 5 used words
-// top 5 least used words
-// top 5 used letters
-// top 5 least used letters
-// longest word/-s
-// shortest word/-s
 
 export default App;

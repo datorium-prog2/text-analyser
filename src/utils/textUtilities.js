@@ -7,7 +7,11 @@ const prepareTextForAnalysing = (text) => {
         .replaceAll('?', '')
         .replaceAll(`'`, '')
         .replaceAll(`"`, '')
-        .replaceAll('\n', '')
+        .replaceAll('+', '')
+        .replaceAll('(', '')
+        .replaceAll(')', '')
+        .replaceAll('–', '')
+        .replaceAll('\n', ' ')
         .replaceAll(/[0-9]/g, '')
 }
 
@@ -17,7 +21,7 @@ const getWordUsageObject = (wordArray) => {
 
     wordArray.forEach((word) => {
         // tukšums nav ne vārds ne burts :) 
-        if(word === ' ') {
+        if(word.trim() === '') {
             return
         }
 
@@ -79,22 +83,28 @@ export const getLongestOrShortestWord = (text, shortest) => {
     const parsedText = prepareTextForAnalysing(text)
     const textArray = parsedText.split(' ')
 
-    let arraySortedByWordlength = textArray.sort((a, b) => {
+    const textArrayParsed = textArray.filter((word) => word.trim())
+
+    let arraySortedByWordlength = textArrayParsed.sort((a, b) => {
         return b.length - a.length;
     });
 
+        
     if (shortest) {
         arraySortedByWordlength = arraySortedByWordlength.reverse()
     }
 
     // iterējam cauri 5 reizes ja ir vismaz 5 itemi masīvā, ja nē tad ejam cauri tik reizēm cik garš ir masīvs
     const timeToIterate = arraySortedByWordlength.length > 5 ? 5 : arraySortedByWordlength.length
+    
     let resultArray = []
 
     // izlogojam top 5 vārdus
     for(let i = 0; i < timeToIterate; i++) {
         // liekam iekšā masīvā infu
-        resultArray.push(arraySortedByWordlength[i])
+        resultArray.push({
+            word: arraySortedByWordlength[i],
+        })
     }
 
     return resultArray
