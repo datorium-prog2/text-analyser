@@ -73,3 +73,29 @@ export const getWordsUsage = (text, topToBottom, seperator) => {
 
     return topFiveWords
 }
+
+export const getLongestOrShortestWord = (text, shortest) => {
+    // iztīram lieko no teksta 
+    const parsedText = prepareTextForAnalysing(text)
+    const textArray = parsedText.split(' ')
+
+    let arraySortedByWordlength = textArray.sort((a, b) => {
+        return b.length - a.length;
+    });
+
+    if (shortest) {
+        arraySortedByWordlength = arraySortedByWordlength.reverse()
+    }
+
+    // iterējam cauri 5 reizes ja ir vismaz 5 itemi masīvā, ja nē tad ejam cauri tik reizēm cik garš ir masīvs
+    const timeToIterate = arraySortedByWordlength.length > 5 ? 5 : arraySortedByWordlength.length
+    let resultArray = []
+
+    // izlogojam top 5 vārdus
+    for(let i = 0; i < timeToIterate; i++) {
+        // liekam iekšā masīvā infu
+        resultArray.push(arraySortedByWordlength[i])
+    }
+
+    return resultArray
+}
